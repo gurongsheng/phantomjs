@@ -203,13 +203,12 @@ bool WebServer::handleRequest(mg_event event, mg_connection* conn, const mg_requ
     // force-encoded in ->uri, and only '#' should be force-encoded
     // in ->query_string.)
     QByteArray uri(request->uri);
-    uri = uri.toPercentEncoding(/*exclude=*/ "!$&'()*+,;=:/[]@");
+    if (uri.startsWith('/'))
+        uri = '/' + QUrl::toPercentEncoding(QString::fromLatin1(request->uri + 1), "/?&#");
     if (request->query_string) {
-        QByteArray qs(request->query_string);
-        qs = qs.toPercentEncoding(/*exclude=*/ "!$&'()*+,;=:/[]@?");
-        uri.append('?');
-        uri.append(qs);
-        requestObject["query"] = UrlEncodedParser::parse(qs);
+        QByteArray queryString = QByteArray(request->query_string);
+        uri.append('?').append(queryString);
+        requestObject["query"] = UrlEncodedParser::parse(queryString);
     }
     requestObject["url"] = uri.data();
 
