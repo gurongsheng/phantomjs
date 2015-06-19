@@ -254,20 +254,19 @@ public slots:
      * @param format String containing one of the supported types
      * @return Rendering base-64 encoded of the page if the given format is supported, otherwise an empty string
      */
-    QString renderBase64(const QByteArray& format = "png");
-    QByteArray renderBuffer(const QByteArray &format = "png", const int quality = -1);
-    bool injectJs(const QString& jsFilePath);
-    void _appendScriptElement(const QString& scriptUrl);
-    QObject* _getGenericCallback();
-    QObject* _getFilePickerCallback();
-    QObject* _getJsConfirmCallback();
-    QObject* _getJsPromptCallback();
-    QObject* _getJsInterruptCallback();
-    void _uploadFile(const QString& selector, const QStringList& fileNames);
-    void sendEvent(const QString& type, const QVariant& arg1 = QVariant(), const QVariant& arg2 = QVariant(), const QString& mouseButton = QString(), const QVariant& modifierArg = QVariant());
+    QString renderBase64(const QByteArray &format = "png");
+    QByteArray renderBuffer(const QByteArray &format = "png");
+    bool injectJs(const QString &jsFilePath);
+    void _appendScriptElement(const QString &scriptUrl);
+    QObject *_getGenericCallback();
+    QObject *_getFilePickerCallback();
+    QObject *_getJsConfirmCallback();
+    QObject *_getJsPromptCallback();
+    QObject *_getJsInterruptCallback();
+    void _uploadFile(const QString &selector, const QStringList &fileNames);
+    void sendEvent(const QString &type, const QVariant &arg1 = QVariant(), const QVariant &arg2 = QVariant(), const QString &mouseButton = QString(), const QVariant &modifierArg = QVariant());
 
-    void setContent(const QString& content, const QString& baseUrl);
-    void setFrameContent(const QString& content, const QString& baseUrl);
+    void setContent(const QString &content, const QString &baseUrl);
     /**
      * Returns a Child Page that matches the given <code>"window.name"</code>.
      * This utility method is faster than accessing the
