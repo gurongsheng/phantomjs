@@ -92,6 +92,7 @@ public:
     QString frameContent() const;
     void setContent(const QString& content);
     void setFrameContent(const QString& content);
+    void setFrameContent(const QString& content, const QString& baseUrl);
 
     QString title() const;
     QString frameTitle() const;

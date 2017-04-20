@@ -1121,6 +1121,7 @@ QByteArray WebPage::renderBuffer(const QByteArray &format, const int quality)
     return "";
 }
 
+/*
 QByteArray WebPage::renderBuffer(const QByteArray &format, const int quality)
 {
     QByteArray nformat = format.toLower();
@@ -1143,8 +1144,9 @@ QByteArray WebPage::renderBuffer(const QByteArray &format, const int quality)
     // Return an empty string in case an unsupported format was provided
     return "";
 }
+*/
 
-QImage WebPage::renderImage()
+QImage WebPage::renderImage(const RenderMode mode)
 {
     QRect frameRect;
     QSize viewportSize = m_customWebPage->viewportSize();
